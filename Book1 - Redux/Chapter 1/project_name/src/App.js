@@ -26,3 +26,13 @@ function App() {
 }
 
 export default App;
+
+
+// Summary
+// In this chapter, we have been introduced to the core building blocks of React apps which are components.
+// We have also been introduced to the React development experience which is creating a new React project
+// with create-react-app. create-react-app provides internal compilation which automatically generates our app for
+// us that we can view on the browser. It is a great tool for developers, whether beginner or advanced. Keep
+// an eye on its changes in GitHub as more functionality is added to it. In the next chapter, we will begin
+// implementing a React app.
+

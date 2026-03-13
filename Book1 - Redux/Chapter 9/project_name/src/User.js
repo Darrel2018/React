@@ -118,3 +118,59 @@ class User extends Component {
 }
 
 export default User;
+
+
+// ### Summary of the Code
+
+// This code defines a **React class component** called **`User`** that displays a list of users stored in **Firebase Realtime Database**. It allows users to **view, add, edit, and delete user records** through a table interface using **React Bootstrap components**.
+
+// #### Key Features
+
+// 1. **State Management**
+
+//    * The component maintains three pieces of state:
+
+//      * `users` – an array containing all user records.
+//      * `showDeleteDialog` – controls whether the delete confirmation modal is visible.
+//      * `selectedUser` – stores the user currently selected for deletion.
+
+// 2. **Fetching Users from Firebase**
+
+//    * In `componentDidMount`, the component connects to **Firebase Realtime Database**.
+//    * It listens for changes using `onValue`, which retrieves all user data from the root path.
+//    * The returned object is converted into an array using `Object.entries`, and each user is given its Firebase key as an `id`.
+
+// 3. **Displaying Users**
+
+//    * The users are displayed in a **React Bootstrap table**.
+//    * Each row shows:
+
+//      * Username
+//      * Email
+//      * An **Edit** link
+//      * A **Remove** button
+
+// 4. **Editing Users**
+
+//    * The **Edit** link uses **React Router’s `Link` component** to navigate to `/edit/{user.id}`.
+//    * This route is used to load a form where the selected user can be edited.
+
+// 5. **Deleting Users**
+
+//    * Clicking the **Remove** button opens a **confirmation modal**.
+//    * If the user confirms deletion:
+
+//      * The `delete` method removes the user from Firebase using the `remove` function.
+//      * After deletion, the modal closes.
+
+// 6. **Delete Confirmation Modal**
+
+//    * A **React Bootstrap Modal** is used to confirm the deletion action.
+//    * It displays the selected user's username and provides **Delete** and **Close** options.
+
+// 7. **Adding Users**
+
+//    * An **Add button** at the top navigates to `/add`, allowing users to create a new user.
+
+//  **Overall:**
+// This component acts as a **user management interface**, displaying users from Firebase in a table and providing functionality to **add, edit, and delete users**, with a confirmation modal to prevent accidental deletions.

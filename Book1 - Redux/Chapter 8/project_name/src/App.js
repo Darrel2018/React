@@ -67,3 +67,95 @@ class NotFound extends Component {
     return <div>Not Found</div>
   }
 }
+
+
+// ### Overview
+
+// This code defines the **main structure of a React application** using **React Router** for navigation and **React-Bootstrap** for UI components. It creates a navigation bar and several routes that render different components depending on the URL.
+
+// ---
+
+// ### Main Components
+
+// #### 1. **App Component**
+
+// * The root component of the application.
+// * It simply renders the **Header component**, which contains the navigation and routing logic.
+
+// ```jsx
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <Header />
+//       </div>
+//     );
+//   }
+// }
+// ```
+
+// ---
+
+// #### 2. **Header Component**
+
+// * Handles **navigation and routing**.
+
+// * Uses **BrowserRouter** from React Router to enable client-side routing.
+
+// * Displays a **React-Bootstrap Navbar** with links:
+
+//   * Home
+//   * GitHub
+//   * Hello
+
+// * Defines routes using **Routes and Route**:
+
+//   * `/` → Home component
+//   * `/github` → GitHub component
+//   * `/github/user/:login/:id` → GitHubUser component (dynamic parameters)
+//   * `/hello` → Hello component
+//   * `/*` → NotFound component (fallback for invalid routes)
+
+// ---
+
+// #### 3. **Home Component**
+
+// * A simple component that displays the text **"Home"**.
+
+// ---
+
+// #### 4. **NotFound Component**
+
+// * Displays **"Not Found"** when the user visits an undefined route.
+
+// ---
+
+// ### Key Technologies Used
+
+// * **React** – for building the UI with components.
+// * **React Router** – for client-side navigation.
+// * **React-Bootstrap** – for styling and responsive UI components like Navbar.
+
+// ---
+
+// ### Routing Flow
+
+// 1. The app loads and displays the **Navbar**.
+// 2. When a user clicks a link:
+
+//    * The URL changes without reloading the page.
+//    * React Router renders the corresponding component.
+// 3. If the URL doesn't match any route, the **NotFound** component is shown.
+
+// ---
+
+// ### Extra Notes
+
+// * The app imports several additional components (`Products`, `Rating`, `UserForm`, `JumboTronComponent`), but they **are not used in this file**.
+// * The route `/github/user/:login/:id` demonstrates **dynamic routing** where parameters (`login`, `id`) can be accessed in the `GitHubUser` component.
+
+// ---
+
+//  **In short:**
+// This code sets up the **main layout and routing system of a React application**, including a navigation bar and multiple pages that render based on the URL.
+

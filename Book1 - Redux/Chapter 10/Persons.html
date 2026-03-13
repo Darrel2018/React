@@ -79,3 +79,78 @@
 </body>
 
 </html>
+
+<!-- ### Summary
+
+This HTML file demonstrates a **basic example of state management using the Redux library in JavaScript**. The program maintains a list of people and allows adding or removing persons from the list.
+
+### Key Components
+
+1. **Redux Library**
+
+   * The code imports the Redux library from a CDN to manage application state.
+
+2. **Action Creators**
+
+   * Two functions create action objects that describe changes to the state:
+   * `addPerson(id, name, age)`
+
+     * Creates an action with type `"ADD"` and includes a person's `id`, `name`, and `age`.
+   * `removePerson(id)`
+
+     * Creates an action with type `"REMOVE"` and includes the `id` of the person to remove.
+
+3. **Initial State**
+
+   * The application starts with:
+
+   ```javascript
+   {
+       persons: []
+   }
+   ```
+
+   * This means the list of persons is initially empty.
+
+4. **Reducer Function**
+
+   * The reducer controls how the state changes based on dispatched actions.
+   * If the action type is `"ADD"`:
+
+     * A new person object is created and added to the `persons` array.
+   * If the action type is `"REMOVE"`:
+
+     * The reducer removes the person whose `id` matches the provided `personId`.
+   * If the action type is unknown:
+
+     * The current state is returned unchanged.
+
+5. **Redux Store**
+
+   * A Redux store is created using the reducer:
+
+   ```javascript
+   const store = Redux.createStore(reducer);
+   ```
+
+   * The store holds and manages the application state.
+
+6. **State Subscription**
+
+   * `store.subscribe(showState);`
+   * This registers a function that runs every time the state changes.
+   * `showState()` prints the current state to the console.
+
+7. **Dispatching Actions**
+
+   * Several actions are dispatched to modify the state:
+   * Four persons are added.
+   * One person (ID 4) is removed.
+
+8. **Console Output**
+
+   * After each action, the updated state is logged to the browser console.
+
+### Overall Functionality
+
+The code demonstrates how **Redux manages application state by using actions, reducers, and a central store**. It shows how data can be **added to or removed from a list of persons while maintaining an immutable state structure**. -->

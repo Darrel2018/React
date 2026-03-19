@@ -39,8 +39,20 @@ function Products() {
 
     return (
         <div>
-            <h2>Products</h2>
-            <ul>{listProducts}</ul>
+            {/* Example 1: INLINE IF USING && OPERATOR (Two if statements) */}
+            {/* {listProducts.length > 0 &&
+                    <ul>{listProducts}</ul>
+                }
+                {listProducts.length === 0 &&
+                    <ul>No Products to display</ul>
+                } */}
+
+            {/* EXAMPLE 2:  If else statement*/}
+            {listProducts.length > 0 ? (
+                <ul>{listProducts}</ul>
+            ) : (
+                <ul>No Products to display</ul>
+            )}
         </div>
     );
 }

@@ -12,7 +12,7 @@ function App() {
         </h1>
         <Products />
         <Button variant="info" disabled={!isValid}>Default</Button> */}
-      <Rating rating="1" />
+      <Rating rating="0" />
       <Rating rating="2" />
       <Rating rating="3" />
       <Rating rating="4" />

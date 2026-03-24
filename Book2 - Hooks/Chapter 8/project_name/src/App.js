@@ -20,7 +20,7 @@ function todosReducer(state, action) {
     case 'edit':
       const updatedToDo = { ...action.payload }
       const updatedToDoIndex = state.todos.findIndex(t => t.id ===
-        action.payload.id)
+        action.payload.id);
       const updatedToDos = [
         ...state.todos.slice(0, updatedToDoIndex),
         updatedToDo,

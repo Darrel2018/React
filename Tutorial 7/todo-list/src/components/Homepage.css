@@ -1,0 +1,76 @@
+.homepage {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(122.19deg, #DA2079 1.89%, #2A00D5 113.56%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.add-edit-input {
+    position: absolute;
+    top: 10vh;
+    width: 18vw;
+    outline: none;
+    border: none;
+    height: 30px;
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.add-icon {
+    position: absolute;
+    top: 11vh;
+    left: 60vw;
+    transform: scale(2);
+    cursor: pointer;
+}
+
+.update-icon {
+    position: absolute;
+    top: 11vh;
+    left: 60vw;
+    transform: scale(2);
+    cursor: pointer;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.todo > h1 {
+    width: 500px;
+    background-color: rgba(206, 206, 206, 0.1);
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+.update-button {
+    position: relative;
+    margin-left: 15px;
+    transform: scale(1.6);
+    cursor: pointer;
+}
+
+.delete-button {
+    position: relative;
+    margin-left: 15px;
+    transform: scale(1.6);
+    cursor: pointer;
+}
+
+.sign-out {
+    position: absolute;
+    top: 5vh;
+    left: 95vw;
+    transform: scale(1.5);
+    cursor: pointer;
+    color: white;
+}

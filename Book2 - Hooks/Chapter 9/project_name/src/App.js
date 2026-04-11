@@ -50,136 +50,74 @@ function App() {
 
 export default App;
 
+// ### 📌 Overview
 
-// This code defines the **main application component (`App`)** for a React to-do list app, using the **`useReducer` hook** and **Context API** to manage global state.
-
-// ---
-
-// ### Key Features:
-
-// * **Initial State:**
-
-//   * `todosInitialState` contains a predefined list of todo items, each with an `id` and `text`.
-
-// * **Reducer Function (`todosReducer`):**
-
-//   * Handles all state updates based on dispatched actions:
-
-//   * **`add`:**
-
-//     * Creates a new todo with a unique ID using `uuidv4`.
-//     * Adds it to the existing todos array.
-
-//   * **`edit`:**
-
-//     * Finds the todo by ID.
-//     * Replaces it with an updated version while keeping the rest of the list unchanged.
-
-//   * **`delete`:**
-
-//     * Removes a todo by filtering it out based on its ID.
-
-//   * **`default`:**
-
-//     * Returns the initial state if the action type is unrecognized.
-
-// * **Context Setup:**
-
-//   * Creates `TodosContext` using `React.createContext()`.
-//   * This allows state and dispatch to be shared across components.
-
-// * **State Management with `useReducer`:**
-
-//   * `useReducer` is used instead of `useState` for more structured state updates.
-//   * Provides:
-
-//     * `state`: current todos
-//     * `dispatch`: function to trigger actions
-
-// * **Component Composition:**
-
-//   * Wraps the `ToDoList` component inside `TodosContext.Provider`.
-//   * Passes `{ state, dispatch }` so child components can access and modify the todos.
+// This code defines a simple **to-do list application state manager** using React’s `useReducer` hook and Context API. It centralizes all todo-related logic (fetching, adding, editing, deleting) in a reducer and makes it accessible across components.
 
 // ---
 
-// ### Overall:
+// ### 🧠 State Management
 
-// This file acts as the **central state manager** for the app. It defines how todos are added, edited, and deleted, and shares this logic with the rest of the app using React’s Context API.
+// * The app uses `useReducer` instead of `useState` for more structured state updates.
+// * Initial state:
 
+//   ```js
+//   { todos: [] }
+//   ```
+// * The state holds a list of todo items.
 
+// ---
 
+// ### ⚙️ Reducer Function (`todosReducer`)
 
+// Handles different actions to update the todo list:
 
-// =================================================================
+// * **`get`** → Replaces the current todos with fetched data.
+// * **`add`** → Adds a new todo to the list.
+// * **`edit`** → Updates an existing todo by:
 
-// OLD CODE 
+//   * Finding it by `id`
+//   * Replacing it in the array (immutably)
+// * **`delete`** → Removes a todo by filtering it out.
+// * **default** → Resets to the initial state.
 
-// =================================================================
+// ---
 
-// import React, { Component, useContext, useReducer } from 'react';
-// import Products from "./Products";
-// import { Button } from 'react-bootstrap';
-// import Rating from "./Rating.js";
-// import JumboTronComponent from './JumboTronComponent';
-// import UserForm from "./UserForm";
-// import GitHub from './GitHub';
-// import { UserContext } from './index.js';
+// ### 🌐 Context API
 
-// const initialState = {
-//   count: 0
-// }
+// * Creates a `TodosContext` to share state and dispatch globally.
+// * This avoids prop drilling (passing props through many layers).
 
-// function App(props) {
-//   const value = useContext(UserContext);
-//   const [state, dispatch] = useReducer(reducer, initialState);
+// ---
 
-//   return (
-//     <div>
-//       {/* Example 1: Props drilling */}
-//       {/* {props.username} */}
+// ### 🧩 App Component
 
-//       {/* Example 2: Consuming Data from context object */}
-//       {/* <UserContext.Consumer>
-//         {value => <div>Received, {value}</div>}
-//       </UserContext.Consumer> */}
+// * Initializes reducer:
 
-//       {/* Example 3: Using useContext Hook */}
-//       {/* Received, {value} */}
+//   ```js
+//   const [state, dispatch] = useReducer(todosReducer, todosInitialState);
+//   ```
+// * Wraps the app in a `TodosContext.Provider`:
 
-//       {/* Example 4: Using useReducer */}
-//       Count: {state.count}
-//       <br />
-//       <Button onClick={() => dispatch({ type: 'increment' })}>
-//         Increment
-//       </Button>
-//       <Button variant="secondary" onClick={() => dispatch({
-//         type:
-//           'decrement'
-//       })}>
-//         Decrement
-//       </Button>
-//       <Button variant="success" onClick={() => dispatch({
-//         type:
-//           'reset'
-//       })}>
-//         Reset
-//       </Button>
-//     </div>
-//   );
-// }
+//   * Provides both `state` and `dispatch` to child components.
+// * Renders the `ToDoList` component, which likely consumes this context.
 
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "increment":
-//       return { count: state.count + 1 }
-//     case "decrement":
-//       return { count: state.count - 1 }
-//     case "reset":
-//       return initialState
-//     default:
-//       return initialState
-//   }
-// }
+// ---
 
-// export default App;
+// ### 🔧 Additional Notes
+
+// * Uses `uuid` (`uuidv4`) to generate unique IDs for todos (though not shown in use here).
+// * Comment shows how to run a local JSON server for backend simulation:
+
+//   ```bash
+//   npx json-server todos.json --port 4000
+//   ```
+
+// ---
+
+// ### ✅ Key Idea
+
+// This code demonstrates a **clean, scalable pattern** for managing shared state in React using:
+
+// * `useReducer` for predictable updates
+// * Context API for global access

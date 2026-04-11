@@ -91,45 +91,127 @@ function ToDoList() {
 
 export default ToDoList;
 
+// ### 📌 Overview
 
-// This code defines a **React functional component** called `ToDoList` that manages and displays a list of to-do items using **React Context** and **React Bootstrap UI components**.
+// This component renders and manages the **UI for a to-do list**, handling user input, displaying todos, and interacting with both:
 
-// ### Key Features:
-
-// * **State Management (Context API):**
-
-//   * Uses `useContext` to access global `state` (list of todos) and `dispatch` (to update them) from `TodosContext`.
-
-// * **Local State:**
-
-//   * `todoText`: stores the input value.
-//   * `editMode`: determines whether the user is editing or adding a todo.
-//   * `editTodo`: stores the todo currently being edited.
-
-// * **Add & Edit Functionality:**
-
-//   * A form allows users to input a task.
-//   * On submit:
-
-//     * If in edit mode → dispatches an `'edit'` action with updated text.
-//     * Otherwise → dispatches an `'add'` action to create a new todo.
-//   * Input field is cleared after submission.
-
-// * **Display Todos:**
-
-//   * Renders a table listing all todos from `state.todos`.
-//   * Each row shows:
-
-//     * The todo text
-//     * An **Edit button** (loads the selected todo into the input field and enables edit mode)
-//     * A **Delete button** (dispatches a `'delete'` action)
-
-// * **UI Components:**
-
-//   * Uses `Form`, `Button`, and `Table` from `react-bootstrap` for styling and layout.
+// * A global state (via Context + reducer)
+// * A backend API (via Axios)
 
 // ---
 
-// ### Overall:
+// ### 🧠 State & Context
 
-// This component provides a simple CRUD interface (Create, Read, Update, Delete) for managing a to-do list using React hooks and context for state management.
+// * Uses `useContext` to access:
+
+//   * `state.todos` → the list of todos
+//   * `dispatch` → to update global state
+
+// * Local state:
+
+//   * `todoText` → input field value
+//   * `editMode` → toggles between add/edit modes
+//   * `editTodo` → stores the todo being edited
+
+// * Button label changes dynamically:
+
+//   ```js
+//   const buttonTitle = editMode ? "Edit" : "Add";
+//   ```
+
+// ---
+
+// ### 🌐 Data Fetching
+
+// * Uses a custom hook `useAPI(endpoint)` to fetch todos from:
+
+//   ```
+//   http://localhost:4000/todos/
+//   ```
+// * `useEffect` watches `savedTodos`:
+
+//   * Whenever data updates, it dispatches:
+
+//     ```js
+//     { type: "get", payload: savedTodos }
+//     ```
+//   * This syncs backend data with global state
+
+// ---
+
+// ### ✍️ Form Handling (`handleSubmit`)
+
+// Handles both **adding** and **editing**:
+
+// #### ➕ Add Mode
+
+// * Creates a new todo with a unique ID (`uuidv4`)
+// * Sends POST request via Axios
+// * Dispatches:
+
+//   ```js
+//   { type: 'add', payload: response.data }
+//   ```
+
+// #### ✏️ Edit Mode
+
+// * Sends PATCH request to update the todo
+// * Dispatches:
+
+//   ```js
+//   { type: 'edit', payload: updatedTodo }
+//   ```
+// * Resets edit state
+
+// #### 🧹 শেষে
+
+// * Clears the input field after submission
+
+// ---
+
+// ### 📋 Rendering the UI
+
+// #### 🧾 Form
+
+// * Input field bound to `todoText`
+// * Submit button toggles between **Add / Edit**
+
+// #### 📊 Table
+
+// Displays all todos:
+
+// * **To Do column** → shows text
+// * **Edit button**:
+
+//   * Loads selected todo into input
+//   * Enables edit mode
+// * **Delete button**:
+
+//   * Sends DELETE request
+//   * Dispatches:
+
+//     ```js
+//     { type: 'delete', payload: todo }
+//     ```
+
+// ---
+
+// ### 🔄 Data Flow
+
+// 1. Fetch todos → `useAPI`
+// 2. Sync to global state → `dispatch(get)`
+// 3. User actions (add/edit/delete):
+
+//    * Update backend via Axios
+//    * Update frontend via `dispatch`
+
+// ---
+
+// ### ✅ Key Idea
+
+// This component acts as the **bridge between UI, global state, and backend**, demonstrating:
+
+// * Controlled forms in React
+// * Context + reducer integration
+// * CRUD operations with an API
+// * Conditional UI behavior (add vs edit)

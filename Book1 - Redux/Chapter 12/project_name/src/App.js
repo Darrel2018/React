@@ -66,83 +66,30 @@ const App = () => {
 
 export default App;
 
+// This React component (App) is a simple data-fetching UI that lets the user switch between two API endpoints and display their results.
 
-// -------------------------
-// OLD CODE
-//-----------------------------
+// Key points:
+// Imports & setup
+// Uses React with the useState hook.
+// Imports Bootstrap styles and a Button component for UI.
+// Uses a custom hook useFetch to retrieve data.
+// Includes a Users component (likely renders user-related info).
+// State management
+// Defines two API URLs:
+// postsUrl (for posts)
+// todosUrl (for todos)
+// Maintains a state variable requested to track which URL is currently selected.
+// Default is set to postsUrl.
+// Data fetching
+// Calls useFetch(requested) to fetch data from the currently selected URL.
+// The returned data is expected to be an array.
+// UI rendering
+// Displays a heading and the Users component.
+// Provides two buttons:
+// Posts → sets requested to the posts API
+// Todos → sets requested to the todos API
+// Shows the currently requested URL.
+// Renders a list of items from data, displaying each item's title.
+// Overall behavior:
 
-// import { connect } from "react-redux";
-// import Cart from "./Cart";
-
-// function mapStateToProps(state) {
-//   return {
-//     totalCost: state.cart.totalCost,
-//     productCart: state.cart.productCart
-//   }
-// }
-
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onAddProduct: (productName, productPrice) => dispatch({ 
-//       type: "addProduct", 
-//       productData: { 
-//         productName: productName, 
-//         productPrice: productPrice 
-//       }
-//     }),
-
-//     onDeleteProduct: (productData) => dispatch({ 
-//       type: "deleteProduct", 
-//       productData: productData 
-//     })
-//   }
-// }
-
-// const connectedComponent = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Cart);
-
-// export default connectedComponent;
-
-
-
-// **Summary of the Code**
-
-// This code connects a React component called `Cart` to a Redux store using the `connect` function from `react-redux`.
-
-// ### Key Parts
-
-// 1. **Importing Dependencies**
-
-//    * `connect` from `react-redux` is used to link the Redux store with the React component.
-//    * The `Cart` component is imported from the local file.
-
-// 2. **`mapStateToProps` Function**
-
-//    * This function selects data from the Redux store and passes it as props to the `Cart` component.
-//    * It provides:
-
-//      * `totalCost` – the total price of items in the cart.
-//      * `productCart` – the list of products currently in the cart.
-
-// 3. **`mapDispatchToProps` Function**
-
-//    * This function creates props that allow the component to dispatch actions to the Redux store.
-//    * It defines two actions:
-
-//      * `onAddProduct(productName, productPrice)` – dispatches an `"addProduct"` action with product name and price.
-//      * `onDeleteProduct(productData)` – dispatches a `"deleteProduct"` action with the product data.
-
-// 4. **Connecting the Component**
-
-//    * The `connect` function combines `mapStateToProps` and `mapDispatchToProps` with the `Cart` component.
-//    * This creates a **connected component** that can read from the Redux store and dispatch actions.
-
-// 5. **Export**
-
-//    * The connected version of the `Cart` component is exported as the default export.
-
-// ✅ **Overall:**
-// The code enables the `Cart` component to access cart data from Redux and perform actions to add or remove products from the cart.
+// The component lets users toggle between viewing posts and todos fetched from an external API. When a button is clicked, the state updates, triggering a new fetch and re-rendering the list.
